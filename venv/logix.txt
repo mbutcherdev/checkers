@@ -1,0 +1,26 @@
+Logic for movement:
+
+1. Check the player has selected a valid piece to move
+    (This will be based on the "turn" being their colour
+2. Check squares are valid for movement
+    - Algorithm will have to search:
+        - Down, left
+        - Down, right
+        If king:
+            - Up, left
+            - Up, right
+        If square blocked:
+            - Check if square is occupied by opponent
+            - If so, check if square behind is empty
+            - If so, allow moving piece to square behind
+                - Remove opponent piece from board
+                - Move player piece to new square
+            - If not, invalid move
+            If square blocked by own piece:
+                - Invalid move
+        If reached end row, promote to King
+    - If no valid moves, end turn
+3. Repeat the algorithm
+    - If no valid moves, end turn
+    - If valid move, double jump or triple jump, repeat algorithm
+    - If no valid moves for opponent, end game
