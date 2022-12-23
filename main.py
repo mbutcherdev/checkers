@@ -1,12 +1,7 @@
 # Checkers game written in Python and PyGame
 # Developed in Python 3.11 using PyGame 2.1.3.dev8
-import os
-
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
-
 import pygame
-from checkers.constants import WIDTH, HEIGHT, TITLE, FPS, SQUARE_SIZE, WHITE, BLACK, CROWN
-from checkers.board import Board
+from checkers.constants import WIDTH, HEIGHT, TITLE, FPS, SQUARE_SIZE
 from checkers.game import Game
 from datetime import datetime
 
@@ -59,7 +54,7 @@ def main():
     while run:
         clock.tick(FPS)
 
-        if game.winner() != None:
+        if game.winner() is not None:
             print(game.winner())
             run = False
         for event in pygame.event.get():

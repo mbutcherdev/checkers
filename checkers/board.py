@@ -16,7 +16,8 @@ class Board:
         self.black_kings = self.white_kings = 0
         self.create_board()
 
-    def draw_squares(self, window):
+    @staticmethod
+    def draw_squares(window):
         window.fill(DARKWOOD)
         for row in range(ROWS):
             for col in range(row % 2, COLS, 2):
@@ -51,12 +52,13 @@ class Board:
         self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]
         piece.move(row, col)
 
-        if row == ROWS - 1 or row == 0 and piece.king == False:  # Promote to king
-            piece.make_king()
-            if piece.color == WHITE:
-                self.white_kings += 1
-            else:
-                self.black_kings += 1
+        if row == ROWS - 1 or row == 0:
+            if not piece.king:  # Promote to king
+                piece.make_king()
+                if piece.color == WHITE:
+                    self.white_kings += 1
+                else:
+                    self.black_kings += 1
 
     def get_valid_moves(self, piece):
         moves = {}
@@ -73,7 +75,9 @@ class Board:
         return moves
 
     # Step is direction which we are checking, skip is the piece we would be jumping over
-    def _traverse_left(self, start, stop, step, color, left, skipped=[]):
+    def _traverse_left(self, start, stop, step, color, left, skipped=None):
+        if skipped is None:
+            skipped = []
         moves = {}
         last = []
         for r in range(start, stop, step):
@@ -106,7 +110,9 @@ class Board:
 
         return moves
 
-    def _traverse_right(self, start, stop, step, color, right, skipped=[]):
+    def _traverse_right(self, start, stop, step, color, right, skipped=None):
+        if skipped is None:
+            skipped = []
         moves = {}
         last = []
         for r in range(start, stop, step):
@@ -124,7 +130,7 @@ class Board:
 
                 if last:
                     if step == -1:
-                        row = max(r - 3, 0)
+                        row = max(r - 3, -1)
                     else:
                         row = min(r + 3, ROWS)
                     moves.update(self._traverse_left(r + step, row, step, color, right - 1, skipped=last))

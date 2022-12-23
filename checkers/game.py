@@ -5,6 +5,10 @@ from .board import Board
 
 class Game:
     def __init__(self, window):
+        self.player = None
+        self.turn = None
+        self.valid_moves = None
+        self.selected = None
         self._init()
         self.window = window
 

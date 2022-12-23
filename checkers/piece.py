@@ -26,7 +26,6 @@ class Piece:
     def make_king(self):
         self.king = True
 
-
     def draw(self, window):
         radius = SQUARE_SIZE // 2 - self.padding
         pygame.draw.circle(window, WHITE, (self.x, self.y), radius + self.outline)

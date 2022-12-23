@@ -1,4 +1,4 @@
-# File contains all 'set' veriables, such as the window size, the window title, etc.
+# File contains all 'set' variables, such as the window size, the window title, etc.
 # Change these values to change the game
 
 # Import modules
@@ -23,4 +23,3 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
 CROWN = pygame.transform.scale(pygame.image.load('assets/crown_image.png'), (44, 25))
-
