@@ -1,13 +1,10 @@
 -- Checkers game log --
 Checkers game written in Python and PyGame by mbutcher.dev
 Developed in Python 3.11 using PyGame 2.1.3.dev8
-Game started at: 12:36:07
+Game started at: 12:38:27
 ---
-Black piece removed
-White piece removed
-White piece removed
 ---
-Game exit called: 12:36:25
-Time elapsed: 0:00:18
+Game exit called: 12:38:29
+Time elapsed: 0:00:02
 Programme closed.
 -- End of log --
